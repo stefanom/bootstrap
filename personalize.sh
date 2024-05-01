@@ -63,12 +63,6 @@ else
     echo "Personalized configs loading block already present in $bashrc, skipping."
 fi
 
-echo "----> Loading the enviornment with the new configurations"
-. "$bashrc"
-
-echo "----> Rigging the new environment"
-rig
-
 echo ""
-echo "All done! Type `. .bashrc` to load the new environment!"
+echo "All done! Type `. .bashrc` to load the new environment and `rig` to finish the installation."
 echo ""
