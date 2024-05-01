@@ -64,5 +64,5 @@ else
 fi
 
 echo ""
-echo "All done! Type `. .bashrc` to load the new environment and `rig` to finish the installation."
+echo "All done! Type '. .bashrc' to load the new environment and 'rig' to finish the installation."
 echo ""
