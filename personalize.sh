@@ -4,6 +4,11 @@ CONFIG_REPO="git@github.com:stefanom/configs.git"
 CONFIG_LOCAL=".cfg"
 CONFIG_BACKUP=".config-backup"
 
+if [ -f "$HOME/$CONFIG_LOCAL/HEAD" ]; then
+    echo "This account has already been personalized, skipping."
+    exit 1
+fi
+
 function config {
    /usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME $@
 }
@@ -37,18 +42,15 @@ config checkout
 echo "----> Tell git to ignore the untracked files in $HOME"
 config config status.showUntrackedFiles no
 
-if grep -qF ".bash_user" "$HOME/.profile"; then
-    echo "----> Skip adding the '.bash_user' loader to $HOME/.profile since it's already present."
-else
-    echo "----> Saving old $HOME/.profile to $HOME/.profile.old"
-    cp .profile .profile.old
-    echo "----> Replacing $HOME/.profile for our new environment"
-    curl -o .profile https://raw.githubusercontent.com/stefanom/configs/main/.profile
-fi
+echo "----> Saving old $HOME/.profile to $HOME/.profile.old"
+cp .profile .profile.old
 
-# Let's burn this candle!
+echo "----> Replacing $HOME/.profile for our new environment"
+curl -o .profile https://raw.githubusercontent.com/stefanom/configs/main/.profile
+
+echo "----> Reload the enviornment with the new configurations"
 . ~/.profile
 
 echo ""
-echo "All done! Enjoy your personalized environment!"
+echo "All done! Enjoy!"
 echo "
