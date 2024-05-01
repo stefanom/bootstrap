@@ -9,8 +9,12 @@ if [ -f "$HOME/$CONFIG_LOCAL/HEAD" ]; then
     exit 1
 fi
 
-function config {
-   /usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME $@
+if ! command -v git >/dev/null 2>&1; then
+    echo "git is not available. Install it before running this script."
+fi
+
+function config() {
+   git --git-dir=$HOME/.cfg/ --work-tree=$HOME $@
 }
 
 echo "----> Make sure we're in the $HOME"
@@ -43,6 +47,12 @@ echo "----> Tell git to ignore the untracked files in $HOME"
 config config status.showUntrackedFiles no
 
 echo "----> Reload the enviornment with the new configurations"
+. ~/.profile
+
+echo "----> Rigging the new environment"
+rig
+
+echo "----> Reload the enviornment one more time so that everyting works.
 . ~/.profile
 
 echo ""
