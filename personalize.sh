@@ -51,13 +51,14 @@ loading_block='
 # -------- personalized configs -----------
 if [ -f "$HOME/.bash_user" ]; then 
     . "$HOME/.bash_user"
-fi'
+fi
+'
 
 bashrc="$HOME/.bashrc"
 
-if ! grep -qF -- "$loading_block" "$bashrc"; then
+if ! grep -qF -- ".bash_user" "$bashrc"; then
     echo "Appending the personalized configs loading block to $bashrc"
-    echo "$code_block" >> "$bashrc"
+    echo "$loading_block" >> "$bashrc"
 else
     echo "Personalized configs loading block already present in $bashrc, skipping."
 fi
