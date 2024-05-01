@@ -52,7 +52,7 @@ echo "----> Reload the enviornment with the new configurations"
 echo "----> Rigging the new environment"
 rig
 
-echo "----> Reload the enviornment one more time so that everyting works.
+echo "----> Reload the enviornment one more time so that everyting works."
 . ~/.profile
 
 echo ""
