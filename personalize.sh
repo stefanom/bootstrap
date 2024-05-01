@@ -46,14 +46,30 @@ config checkout
 echo "----> Tell git to ignore the untracked files in $HOME"
 config config status.showUntrackedFiles no
 
+loading_block='
+
+# -------- personalized configs -----------
+if [ -f "$HOME/.bash_user" ]; then 
+    . "$HOME/.bash_user"
+fi'
+
+bashrc="$HOME/.bashrc"
+
+if ! grep -qF -- "$loading_block" "$bashrc"; then
+    echo "Appending the personalized configs loading block to $bashrc"
+    echo "$code_block" >> "$bashrc"
+else
+    echo "Personalized configs loading block already present in $bashrc, skipping."
+fi
+
 echo "----> Reload the enviornment with the new configurations"
-. ~/.profile
+. "$bashrc"
 
 echo "----> Rigging the new environment"
 rig
 
 echo "----> Reload the enviornment one more time so that everyting works."
-. ~/.profile
+. "$bashrc"
 
 echo ""
 echo "All done! Enjoy!"
