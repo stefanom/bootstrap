@@ -4,7 +4,7 @@ This repository contains scripts that can be invoked directly from the command l
 
 Here are the command lines for how we expect the scripts to be invoked:
 
-## Update.sh
+## Update
 
 This [script]("update.sh") runs apt to update and upgrade the system. Since this could also result in a kernel upgrade, the script reboots the system at the end.
 

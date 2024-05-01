@@ -42,15 +42,9 @@ config checkout
 echo "----> Tell git to ignore the untracked files in $HOME"
 config config status.showUntrackedFiles no
 
-echo "----> Saving old $HOME/.profile to $HOME/.profile.old"
-cp .profile .profile.old
-
-echo "----> Replacing $HOME/.profile for our new environment"
-curl -o .profile https://raw.githubusercontent.com/stefanom/configs/main/.profile
-
 echo "----> Reload the enviornment with the new configurations"
 . ~/.profile
 
 echo ""
 echo "All done! Enjoy!"
-echo "
+echo ""
