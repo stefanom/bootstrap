@@ -15,7 +15,7 @@ if ! command -v git >/dev/null 2>&1; then
 fi
 
 function config() {
-   git --git-dir=$HOME/.cfg/ --work-tree=$HOME $@
+   git --git-dir=$HOME/$CONFIG_LOCAL/ --work-tree=$HOME $@
 }
 
 echo "----> Make sure we're in the $HOME"
