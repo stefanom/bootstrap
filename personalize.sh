@@ -63,6 +63,17 @@ else
     echo "Personalized configs loading block already present in $bashrc, skipping."
 fi
 
+echo "----> Cloning the bootstrap repo into $HOME/.bootstrap"
+git clone https://github.com/stefanom/bootstrap.git $HOME/.bootstrap
+
+echo "----> Copying the binaries into $HOME/.local/bin"
+mkdir -p $HOME/.local/bin
+arch=$(uname -m)
+mv $HOME/.bootstrap/bin/${arch}-unknown-linux-gnu/bin/* $HOME/.local/bin/.
+
+echo "----> Deleting the bootstrap repo $HOME/.bootstrap"
+rm -rf $HOME/.bootstrap
+
 echo ""
-echo "All done! Type '. .bashrc' to load the new environment and 'rig' to finish the installation."
+echo "All done! Type '. .bashrc' to load the new environment."
 echo ""
