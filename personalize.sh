@@ -2,7 +2,7 @@
 
 CONFIG_REPO="git@github.com:stefanom/configs.git"
 CONFIG_LOCAL=".cfg"
-CONFIG_BACKUP=".config-backup"
+CONFIG_BACKUP=".cfg-backup"
 
 if [ -f "$HOME/$CONFIG_LOCAL/HEAD" ]; then
     echo "This account has already been personalized, skipping."
@@ -10,7 +10,8 @@ if [ -f "$HOME/$CONFIG_LOCAL/HEAD" ]; then
 fi
 
 if ! command -v git >/dev/null 2>&1; then
-    echo "git is not available. Install it before running this script."
+    echo "----> git is not available, installing it..."
+    sudo apt install git -y
 fi
 
 function config() {
