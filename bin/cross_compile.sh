@@ -7,7 +7,7 @@ BASE_DIR="."
 ARCHS=("x86_64-unknown-linux-gnu" "aarch64-unknown-linux-gnu")
 
 # Define the crates to install
-CRATES="starship eza bandwhich bat btm du-dust jq kondo procs zoxide ripgrep"
+CRATES="starship eza bandwhich bat bottom du-dust kondo procs zoxide ripgrep"
 
 if ! command -v aarch64-linux-gnu-gcc &>/dev/null; then
     # Update and install cross-compilation toolchain
@@ -30,5 +30,5 @@ for ARCH in "${ARCHS[@]}"; do
     echo "Creating installation directory at $INSTALL_DIR"
     mkdir -p "$INSTALL_DIR"
 
-    cargo install --target $ARCH --root "$INSTALL_DIR" $CRATES
+    cargo install --config cargo.toml --target $ARCH --root "$INSTALL_DIR" $CRATES
 done
