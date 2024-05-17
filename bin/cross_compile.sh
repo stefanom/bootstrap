@@ -7,7 +7,7 @@ BASE_DIR="."
 ARCHS=("x86_64-unknown-linux-gnu" "aarch64-unknown-linux-gnu")
 
 # Define the crates to install
-CRATES="starship eza bandwhich bat bottom du-dust kondo procs zoxide ripgrep"
+CRATES="starship eza bandwhich bat bottom du-dust kondo procs zoxide ripgrep git-delta"
 
 if ! command -v aarch64-linux-gnu-gcc &>/dev/null; then
     # Update and install cross-compilation toolchain
